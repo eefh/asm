@@ -1,12 +1,13 @@
 mov ah, 0x0e
-mov al, 97
-int 0x10
-
+mov al, 65
 loop:
-    inc al
-    cmp al, 'z' + 1
-    je exit
     int 0x10
+    add al, 32
+    int 0x10
+    cmp al, 'z'
+    je exit
+    sub al, 32
+    inc al
     jmp loop
 exit:
     jmp $
